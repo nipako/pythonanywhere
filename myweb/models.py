@@ -1,16 +1,15 @@
 from django.db import models
 
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+class cosmeticsType(models.Model):
+    text = models.CharField(max_length=200)
 
     def __str__(self):
-        return f'{self.question_text}'
+        return f'{self.text}'
 
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
+class cosmetics(models.Model):
+    cosmetics_Type = models.ForeignKey(cosmeticsType, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    detail = models.IntegerField()
 
     def __str__(self):
-        return f'{self.question.question_text} - {self.votes}'
+        return f'{self.cosmetics_Type.text} - {self.name} - {self.detail}'
